@@ -1,0 +1,14 @@
+<div>
+  <ng-container *ngIf="usersList$ | async as usersList; else loader">
+    <div class="text-lg mb-2">Users List:</div>
+    <app-user-item
+      *ngFor="let user of usersList"
+      [user]="user"
+      (selectUser)="onSelectUser($event)"
+    ></app-user-item>
+  </ng-container>
+</div>
+
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>
